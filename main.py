@@ -8,6 +8,7 @@ from handlers.start import router as start_router
 from handlers.help import router as help_router
 from handlers.about import router as about_router
 from handlers.buttons import router as buttons_router
+from handlers.chat import router as chat_router
 
 logging.basicConfig(level=logging.INFO)
 
@@ -20,6 +21,7 @@ dp.include_router(start_router)
 dp.include_router(help_router)
 dp.include_router(about_router)
 dp.include_router(buttons_router)
+dp.include_router(chat_router)
 
 async def main():
     await dp.start_polling(bot)
