@@ -4,6 +4,7 @@ import logging
 from utils.logger import setup_logger
 from aiogram import Bot, Dispatcher
 from aiogram.exceptions import TelegramNetworkError
+from middlewares.user_middleware import UserMiddleware
 
 from config import BOT_TOKEN
 from database.database import initialize_database
@@ -32,6 +33,7 @@ dp = Dispatcher()
 
 
 # Register routers
+dp.message.middleware(UserMiddleware())
 dp.include_router(start_router)
 dp.include_router(help_router)
 dp.include_router(about_router)
@@ -42,6 +44,7 @@ dp.include_router(utility_router)
 dp.include_router(tools_router)
 dp.include_router(fun_router)
 dp.include_router(admin_router)
+
 
 
 async def main():

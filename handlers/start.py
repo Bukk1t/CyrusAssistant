@@ -11,8 +11,7 @@ router = Router()
 
 @router.message(CommandStart())
 async def start(message: Message):
-    register_user(message.from_user)
-    
+
     await message.answer(
         "👋 Welcome to Ask Cyrus!\n\n"
         "The bot is online!",

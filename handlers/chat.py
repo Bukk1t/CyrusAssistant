@@ -9,7 +9,6 @@ router = Router()
 
 @router.message()
 async def chat_handler(message: Message):
-    register_message(message.from_user.id)
 
     await message.answer(
         "❓ I don't understand that yet.\n\n"
