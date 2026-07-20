@@ -44,3 +44,16 @@ def get_user(user_id):
     connection.close()
 
     return user
+
+def get_user_count():
+    connection = sqlite3.connect(DB_PATH)
+
+    cursor = connection.execute(
+        "SELECT COUNT(*) FROM users"
+    )
+
+    count = cursor.fetchone()[0]
+
+    connection.close()
+
+    return count

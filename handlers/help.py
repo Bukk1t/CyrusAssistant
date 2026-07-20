@@ -20,4 +20,7 @@ async def help_command(message: Message):
         "/id - Show your Telegram ID\n"
         "/userinfo - Show your profile info\n"
         "/time - Show current time"
+
+        "👑 Admin:
+        "/stats - Show bot statistics"
     )
