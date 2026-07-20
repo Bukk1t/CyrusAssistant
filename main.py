@@ -1,8 +1,8 @@
 import asyncio
 import logging
 
+from database.database import initialize_database
 from aiogram import Bot, Dispatcher
-
 from config import BOT_TOKEN
 
 from handlers.start import router as start_router
@@ -35,7 +35,13 @@ dp.include_router(fun_router)
 dp.include_router(admin_router)
 
 async def main():
+    initialize_database()
+
     try:
         await dp.start_polling(bot)
     finally:
         await bot.session.close()
+
+        
+if __name__ == "__main__":
+    asyncio.run(main())
