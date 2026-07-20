@@ -55,7 +55,7 @@ def get_user(user_id):
     with get_connection() as connection:
         cursor = connection.execute(
             """
-            SELECT id, username, first_name, messages, last_seen
+            SELECT id, username, first_name, joined_at, messages, last_seen
             FROM users
             WHERE id = ?
             """,

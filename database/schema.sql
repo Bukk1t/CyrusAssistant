@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
     username TEXT,
     first_name TEXT,
+    joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     messages INTEGER DEFAULT 0,
     last_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

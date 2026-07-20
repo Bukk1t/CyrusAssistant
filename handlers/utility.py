@@ -63,7 +63,7 @@ async def profile(message: Message):
         )
         return
 
-    user_id, username, first_name, messages, last_seen = user
+    user_id, username, first_name, joined_at, messages, last_seen = user
 
     username_text = f"@{username}" if username else "No username"
 
@@ -74,4 +74,5 @@ async def profile(message: Message):
         f"🏷 Username: {username_text}\n"
         f"💬 Messages: {messages}\n"
         f"🕒 Last Seen: {last_seen}"
+        f"📅 Joined: {joined_at}\n"
     )
