@@ -1,6 +1,7 @@
 import asyncio
 import logging
 
+from utils.logger import setup_logger
 from aiogram import Bot, Dispatcher
 from aiogram.exceptions import TelegramNetworkError
 
@@ -18,10 +19,7 @@ from handlers.fun import router as fun_router
 from handlers.admin import router as admin_router
 
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s",
-)
+logger = setup_logger()
 
 
 if not BOT_TOKEN:

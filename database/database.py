@@ -50,3 +50,16 @@ def get_user_count():
             "SELECT COUNT(*) FROM users"
         )
         return cursor.fetchone()[0]
+
+def get_user(user_id):
+    with get_connection() as connection:
+        cursor = connection.execute(
+            """
+            SELECT id, username, first_name, messages, last_seen
+            FROM users
+            WHERE id = ?
+            """,
+            (user_id,),
+        )
+
+        return cursor.fetchone()

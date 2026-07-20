@@ -21,7 +21,8 @@ async def help_command(message: Message):
         "/userinfo - Show your profile info\n"
         "/time - Show current time"
         "/status - Show bot status"
+        "/profile - View your Cyrus profile"
 
-        "👑 Admin:
+        "👑 Admin:\n"
         "/stats - Show bot statistics"
     )

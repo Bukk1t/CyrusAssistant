@@ -4,6 +4,7 @@ from aiogram.filters import Command
 from datetime import datetime
 from utils.uptime import get_uptime
 from database.database import get_user_count
+from database.database import get_user
 
 router = Router()
 
@@ -49,4 +50,28 @@ async def status(message: Message):
         "🟢 Online\n"
         f"⏱ Uptime: {get_uptime()}\n"
         f"👥 Users: {users}"
+    )
+    
+@router.message(Command("profile"))
+async def profile(message: Message):
+    user = get_user(message.from_user.id)
+
+    if user is None:
+        await message.answer(
+            "❌ No profile found.\n\n"
+            "Use /start first."
+        )
+        return
+
+    user_id, username, first_name, messages, last_seen = user
+
+    username_text = f"@{username}" if username else "No username"
+
+    await message.answer(
+        "👤 Cyrus Profile\n\n"
+        f"🆔 ID: {user_id}\n"
+        f"👋 Name: {first_name}\n"
+        f"🏷 Username: {username_text}\n"
+        f"💬 Messages: {messages}\n"
+        f"🕒 Last Seen: {last_seen}"
     )
