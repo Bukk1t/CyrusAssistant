@@ -4,7 +4,7 @@ from aiogram.filters import Command
 from datetime import datetime
 from utils.uptime import get_uptime
 from database.database import get_user_count
-from database.database import get_user
+from services.user_service import get_profile
 
 router = Router()
 
@@ -54,7 +54,7 @@ async def status(message: Message):
     
 @router.message(Command("profile"))
 async def profile(message: Message):
-    user = get_user(message.from_user.id)
+    user = get_profile(message.from_user.id)
 
     if user is None:
         await message.answer(
