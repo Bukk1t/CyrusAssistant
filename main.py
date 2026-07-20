@@ -17,6 +17,7 @@ from handlers.utility import router as utility_router
 from handlers.tools import router as tools_router
 from handlers.fun import router as fun_router
 from handlers.admin import router as admin_router
+from handlers.errors import router as error_router
 
 
 logger = setup_logger()
