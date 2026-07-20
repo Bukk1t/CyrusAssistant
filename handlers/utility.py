@@ -2,7 +2,8 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters import Command
 from datetime import datetime
-
+from utils.uptime import get_uptime
+from database.database import get_user_count
 
 router = Router()
 
@@ -37,4 +38,15 @@ async def current_time(message: Message):
 
     await message.answer(
         f"🕒 Current time:\n{now.strftime('%Y-%m-%d %H:%M:%S')}"
+    )
+
+@router.message(Command("status"))
+async def status(message: Message):
+    users = get_user_count()
+
+    await message.answer(
+        "🤖 Cyrus Status\n\n"
+        "🟢 Online\n"
+        f"⏱ Uptime: {get_uptime()}\n"
+        f"👥 Users: {users}"
     )
